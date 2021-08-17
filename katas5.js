@@ -11,12 +11,13 @@ function reverseString (str) {
     strArray = str.split(' ')
 
     for (let i = 0; i < strArray.length; i++) {
-        let txt = strArray[i].split('')
-
-        console.log("txt : ", txt)
-
-        reverseStr.push(txt)
+        str = strArray[i].split('')
+        str.reverse()
+        let takeOutSpace = str.join(' ').replace(/\s/g, '')
+        reverseStr.push(takeOutSpace)
     }
+    reverseStr.reverse()
+    return reverseStr.join(' ')
+} 
 
-    return reverseStr
-}
+testeReverseString1()
