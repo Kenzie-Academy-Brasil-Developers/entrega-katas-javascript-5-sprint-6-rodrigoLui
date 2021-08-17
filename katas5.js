@@ -5,8 +5,18 @@ function testeReverseString1() {
     console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
 }
 
-function testeReverseString2() {
-    let result = reverseString("Kenzie Academy");
-    let expected = "Academy Kenzie";
-    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+function reverseString (str) {
+    let strArray = new Array
+    let reverseStr = new Array
+    strArray = str.split(' ')
+
+    for (let i = 0; i < strArray.length; i++) {
+        let txt = strArray[i].split('')
+
+        console.log("txt : ", txt)
+
+        reverseStr.push(txt)
+    }
+
+    return reverseStr
 }
