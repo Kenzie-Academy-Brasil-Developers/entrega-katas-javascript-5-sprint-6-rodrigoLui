@@ -118,27 +118,75 @@ testCalculateRemainder2()
 // KATA 06
 
 const testDistinctValues1 = () => {
-    let result = distinctValues([2,2,1,4,1,3,8,8,3])
+    let result = distinctValues([2,2,1,4,1,3,8,8,3]).toString()
     let expected = [1,2,3,4,8]
-    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+    console.assert(result === expected.toString(), `esperado: ${expected}, obtido: ${result}`)
 }
 const testDistinctValues2 = () => {
-    let result = distinctValues([2,2,1,4,1,8,8,9,1,1,2])
-    let expected = [1,2,4,8,9]
-    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+    let result = distinctValues([3,4,2,-6,1,7,3,2,5,1,4,1,3]).toString()
+    let expected = [-6,1,2,3,4,5,7]
+    console.assert(result === expected.toString(), `esperado: ${expected}, obtido: ${result}`)
 }
 
 const distinctValues = numbers => {
     let arrayDistinct = new Array
-
+    
     for (let i = 0; i < numbers.length; i++) {
-        
-        let aux = numbers[i]
-        
-        arrayDistinct.push(aux)
+        let position = arrayDistinct.indexOf(numbers[i])
+        if (position === -1) {
+            arrayDistinct.push(numbers[i])
+        }
     }
-
-    return arrayDistinct
+    return arrayDistinct.sort((a, b) => a - b)
 } 
 testDistinctValues1 ()
 testDistinctValues2 ()
+
+// KATA 07
+
+const testCountValues1 = () => {
+    let result = countValues([1,2,1,1,2,2])
+    let expected = '1(3) 2(3)'
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+}
+const testCountValues2 = () => {
+    let result = countValues([1,2,1,1,2,2])
+    let expected = '1(3) 2(3)'
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+}
+
+const countValues = value => {
+    let numberDistinct = distinctValues(value)
+
+    for (let i = 0; i < value.length; i++) {
+
+        
+    }
+
+    return 
+}
+testCountValues1()
+testCountValues2()
+
+//KATA 08
+
+const testEvaluateExpression1 = () => {
+    let result = evaluateExpression()
+    let expected = ""
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+}
+const testEvaluateExpression2 = () => {
+    let result = evaluateExpression()
+    let expected = ""
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+}
+
+const  evaluateExpression = value => {
+
+
+
+    return value
+}
+
+testEvaluateExpression1()
+testEvaluateExpression2()
