@@ -70,6 +70,7 @@ const minimumValue = num => {
     }
     return minValue
 }
+
 testMinimumValue1()
 testMinimumValue2()
 
@@ -145,25 +146,35 @@ testDistinctValues2 ()
 // KATA 07
 
 const testCountValues1 = () => {
-    let result = countValues([1,2,1,1,2,2])
-    let expected = '1(3) 2(3)'
-    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+    let result = countValues("1 3 5 3 7 3 1 1 5")
+    let expected = "1(3) 3(3) 5(2) 7(1)"
+    console.assert(result.toString === expected.toString, `esperado: ${expected}, obtido: ${result}`)
 }
 const testCountValues2 = () => {
-    let result = countValues([1,2,1,1,2,2])
+    let result = countValues('1 2 1 1 2 2')
     let expected = '1(3) 2(3)'
-    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+    console.assert(result.toString === expected.toString, `esperado: ${expected}, obtido: ${result}`)
 }
 
 const countValues = value => {
-    let numberDistinct = distinctValues(value)
+    let arrayStr = new Array
+    let arrayCaractere = value.split(' ')
 
-    for (let i = 0; i < value.length; i++) {
-
-        
+    const objCaractere = {};
+    for (let i = 0; i < arrayCaractere.length; i++) {
+        let pegaCaractere = arrayCaractere[i];
+        if (objCaractere[pegaCaractere ] === undefined) {
+            objCaractere[pegaCaractere ] = 1; 
+        } else { 
+            objCaractere[pegaCaractere ]++; 
+        }
+    }
+    
+    for (let caracter in objCaractere) { 
+        arrayStr.push(`${caracter}(${objCaractere[caracter]}) `)
     }
 
-    return 
+    return arrayStr.join(' ')
 }
 testCountValues1()
 testCountValues2()
@@ -171,21 +182,30 @@ testCountValues2()
 //KATA 08
 
 const testEvaluateExpression1 = () => {
-    let result = evaluateExpression()
-    let expected = ""
-    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+    let result = evaluateExpression("a + b + c - d", {a: 1, b: 7, c: 3, d: 14});
+    let expected = -3
+   console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
 }
 const testEvaluateExpression2 = () => {
-    let result = evaluateExpression()
-    let expected = ""
-    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+    let result = evaluateExpression("a + b + c - d", {a: 1, b: 7, c: 3, d: 14});
+    let expected = -3
+   console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
 }
 
-const  evaluateExpression = value => {
+const  evaluateExpression = (valueStr, obj) => {
+    let result = 0
+    let chunkStr = valueStr.split(' ')
 
+    for (let i = 0; i < chunkStr.length; i++) {
+        let aux = Object.keys(obj)[i]
 
+        if (chunkStr[i] === aux) {
+            aux = obj[aux]
+            chunkStr[i] = aux
+        }
+    }
 
-    return value
+    return result
 }
 
 testEvaluateExpression1()
